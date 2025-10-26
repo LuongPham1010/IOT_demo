@@ -17,20 +17,70 @@ Kịch bản bao gồm ba thành phần chính:
 
 ## Yêu cầu cài đặt
 
-### 1. Phần mềm hệ thống
+Dự án này yêu cầu cài đặt các thư viện Python và một số phần mềm hệ thống.
 
-Bạn cần cài đặt hai công cụ sau trên máy tính của mình:
-
-*   **TShark**: Công cụ bắt gói tin dòng lệnh đi kèm với [Wireshark](https://www.wireshark.org/download.html). Hãy đảm bảo rằng `tshark` đã được thêm vào `PATH` của hệ thống để có thể gọi từ terminal.
-*   **MQTT Broker**: Một message broker hỗ trợ giao thức MQTT. [Mosquitto](https://mosquitto.org/download/) là một lựa chọn phổ biến và dễ cài đặt. Broker phải đang chạy tại `localhost:1883`.
-
-### 2. Thư viện Python
+### 1. Thư viện Python
 
 Cài đặt các thư viện Python cần thiết bằng file `requirements.txt`:
 
 ```bash
 pip install -r requirements.txt
 ```
+
+### 2. Phần mềm hệ thống
+
+Bạn cần cài đặt TShark và một MQTT Broker (khuyến nghị Mosquitto).
+
+#### Cài đặt TShark (Wireshark)
+
+TShark là công cụ dòng lệnh của Wireshark. Cách dễ nhất để cài đặt nó là cài đặt Wireshark.
+
+*   **Trên Windows:**
+    1.  Tải bộ cài đặt từ [trang chủ Wireshark](https://www.wireshark.org/download.html).
+    2.  Chạy file `.exe`. Trong quá trình cài đặt, **hãy chắc chắn rằng bạn đã tick vào ô "Add Wireshark to the system PATH"** để có thể gọi lệnh `tshark` từ Command Prompt hoặc PowerShell.
+
+*   **Trên macOS (sử dụng [Homebrew](https://brew.sh/)):**
+    ```bash
+    brew install wireshark
+    ```
+
+*   **Trên Linux (Ubuntu/Debian):**
+    ```bash
+    sudo apt update
+    sudo apt install tshark
+    ```
+    *   Trong quá trình cài đặt, một hộp thoại sẽ hiện lên hỏi `Should non-superusers be able to capture packets?`. Chọn **<Yes>** để tiện lợi hơn khi chạy script mà không cần `sudo`.
+
+*   **Kiểm tra cài đặt:**
+    Sau khi cài đặt xong, mở một terminal mới và chạy lệnh `tshark --version`. Nếu bạn thấy thông tin phiên bản hiện ra, nghĩa là cài đặt đã thành công.
+
+#### Cài đặt MQTT Broker (Mosquitto)
+
+*   **Trên Windows:**
+    1.  Tải bộ cài đặt từ [trang chủ Mosquitto](https://mosquitto.org/download/).
+    2.  Chạy file installer. Sau khi cài đặt, Mosquitto thường sẽ chạy như một dịch vụ (service) nền.
+
+*   **Trên macOS (sử dụng Homebrew):**
+    ```bash
+    brew install mosquitto
+    ```
+    *   Để khởi động broker và cho nó chạy nền, dùng lệnh:
+        ```bash
+        brew services start mosquitto
+        ```
+
+*   **Trên Linux (Ubuntu/Debian):**
+    ```bash
+    sudo apt update
+    sudo apt install mosquitto mosquitto-clients
+    ```
+    *   Dịch vụ Mosquitto sẽ tự động khởi động sau khi cài đặt. Bạn có thể kiểm tra trạng thái bằng lệnh:
+        ```bash
+        sudo systemctl status mosquitto
+        ```
+
+*   **Kiểm tra Broker:**
+    Broker sẽ lắng nghe trên cổng `1883`. Script sẽ tự động kết nối đến `localhost:1883`.
 
 ## Hướng dẫn chạy thực nghiệm
 
