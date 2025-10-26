@@ -100,7 +100,7 @@ python run_experiment.py --help
 **Ví dụ sử dụng:**
 
 1.  **Chạy với cài đặt mặc định:**
-    (Sử dụng interface `lo`, thu thập trong `60` giây cho mỗi kịch bản)
+    (Sử dụng interface `lo`, thu thập trong `120` giây cho mỗi kịch bản)
     ```bash
     python run_experiment.py
     ```
@@ -123,8 +123,8 @@ python run_experiment.py --help
     ```
 
 Tập lệnh sẽ tự động thực hiện các bước sau:
-1.  Thu thập 60 giây dữ liệu cho lưu lượng bình thường và lưu vào `normal.pcap`.
-2.  Thu thập 60 giây dữ liệu cho lưu lượng tấn công và lưu vào `attack.pcap`.
+1.  Thu thập 120 giây (mặc định) dữ liệu cho lưu lượng bình thường và lưu vào `normal.pcap`.
+2.  Thu thập 120 giây (mặc định) dữ liệu cho lưu lượng tấn công và lưu vào `attack.pcap`.
 3.  Trích xuất đặc trưng, huấn luyện mô hình, và in ra báo cáo phân loại (classification report).
 4.  Hiển thị ma trận nhầm lẫn (confusion matrix) dưới dạng một biểu đồ.
 

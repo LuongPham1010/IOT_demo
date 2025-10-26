@@ -119,8 +119,8 @@ def main():
     parser.add_argument(
         "-t", "--time",
         type=int,
-        default=60,
-        help="Duration in seconds for each data collection phase.\nDefault is 60."
+        default=120,
+        help="Duration in seconds for each data collection phase.\nDefault is 120."
     )
     parser.add_argument(
         "--normal-out",
